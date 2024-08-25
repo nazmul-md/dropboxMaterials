@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Information Form</h2>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+        <span id="nameError" class="error"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+        <span id="emailError" class="error"></span><br>
+
+        <label for="about">About:</label>
+        <input type="text" id="about"><br>
+        <span id="aboutError" class="error"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <span id="passwordError" class="error"></span><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" required><br>
+        <span id="confirmPasswordError" class="error"></span><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function isValidName(name) {
+            if(name.length<5) return false;
+            if (!name.match(".*[A-Z].*")) return false;
+            if (!name.match(".*[a-z].*")) return false;
+            return true;
+        }
+        function isValidAbout(name) {
+            if(name.length && name.length<10) return false;
+            return true;
+        }
+        function isValidPassword(password) {
+            if(password.length<8) return false;
+            if (!password.match(".*[A-Z].*")) return false;
+            if (!password.match(".*[a-z].*")) return false;
+            if (!password.match(".*\\d.*")) return false;
+            if (!password.match(".*[-+_!@#$%^&*.,?].*")) return false;
+            return true;
+        }
+        function validateData(data) {
+            // Simulated asynchronous data validation using promises
+            const names = ["Sakib", "Tamim","Musfiq", "Riyad", "PaponDa"]
+            const emails = ["Sakib@gmail.com", "Tamim@gmail.com","Musfiq@gmail.com", "Riyad@gmail.com", "PaponDa@gmail.com"]
+        
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    names.forEach(name => {
+                        if(data.name ===name) {
+                            reject({ field: "name", message: "Name is already taken." });
+                        }
+                    });
+                    emails.forEach(email => {
+                        if(data.email ===email) {
+                            reject({ field: "email", message: "Email is already taken." });
+                        }
+                    });
+                    if(!isValidName(data.name)) {
+                        reject({ field: "name", message: "Provide valid name (Alphabet only) with atleast 5 characters." });
+                    } else if(!isValidAbout(data.about)) {
+                        reject({ field: "about", message: "This field is optional but, if provided, should be at least 10 characters long" });
+                    } else if(!isValidPassword(data.password)) {
+                        reject({ field: "password", message: "Provide valid password.at least 8 characters long and contains at least one uppercase letter, one lowercase letter, one number, and one special character." });
+                    } else if(data.password != data.confirmPassword){
+                        reject({ field: "confirmPassword", message: "Confirm password must be the same as password." });
+                    }
+                    else {
+                        resolve();
+                    }
+                }, 2000); // Simulate a 2-seconds delay for validation
+            });
+        }
+
+        // Form submission
+        document.getElementById("userForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const about = document.getElementById("about").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Clear previous error messages
+            document.querySelectorAll(".error").forEach((element) => {
+                element.textContent = "";
+            });
+
+            // Data object
+            const userData = {
+                name,
+                email,
+                about,
+                password,
+                confirmPassword,
+            };
+
+            try {
+                // Simulate asynchronous data validation
+                await validateData(userData);
+
+                // If validation succeeds, submit the form (you can replace this with an actual form submission)
+                alert("Form submitted successfully!");
+            } catch (error) {
+                // Display validation errors
+                document.getElementById(`${error.field}Error`).textContent = error.message;
+            }
+        });
+    </script>
+</body>
+</html>

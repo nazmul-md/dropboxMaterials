@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Complex HTML Page with CSS Combinators</title>
+    <style>
+      
+
+      /* Use CSS combinators to style the main content area */
+      main > div { /* div-1, sidebar */
+        width: 80%;
+        /* color: red; */
+        float: right;
+      }
+      
+      /* Use CSS combinators to style the h2 tag in the main content area */
+      main > div h2 { /* h21, s-h */
+        /* color: green; */
+        /* margin-top: 0; */
+      }
+      /* Use CSS combinators to style the second paragraph in the main content area */
+      main > div p:nth-of-type(2) { /* p-2 */
+        /* font-size: 16px; */
+        /* color: yellow; */
+      }
+      body > #f-p-1 { /*  */
+        clear: both; 
+        color: green;
+      }
+      div + div { /* none */
+        /* color: red; */
+      }
+      div + p { /* mid */
+        /* color: red; */
+      }
+      main ul li:nth-of-type(2) { /* ul-li-21, ul-li-2 */
+        /* color: red; */
+      }
+
+      li ~ li { /* ul-li-21, ul-li-2, ul-li-3 */
+        /* color: red; */
+      }
+
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <div id="div-1">
+        <h2 id="h21">Main Content Area</h2>
+        <p id="p1">First paragraph.</p>
+        <p id="p2">Second paragraph.</p>
+        <ul id="d-ul1">
+            <li id="ul-li-11"><a href="#" id="hr-11">Link 1</a></li>
+            <li id="ul-li-21"><a href="#" id="hr-21">Link 2</a></li>
+        </ul>
+      </div>
+      <p id="mid">Middle</p>
+      <div id="sidebar">
+        <h2 id="s-h">Sidebar</h2>
+        <ul id="d-ul">
+          <li id="ul-li-1"><a href="#" id="hr-1">Link 1</a></li>
+          <li id="ul-li-2"><a href="#" id="hr-2">Link 2</a></li>
+          <li id="ul-li-3"><a href="#" id="hr-3">Link 3</a></li>
+        </ul>
+      </div>
+    </main>
+    <footer id="footer">
+        <p id="f-p-1">All Rights Reserved</p>
+        <p id="f-p-2">IUT, CSE</p>      
+    </footer>
+  </body>
+</html>

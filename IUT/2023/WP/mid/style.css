@@ -1,0 +1,37 @@
+/* When a user hover "CSS Totorial" link, the font size and color will be changed and aside element will be shown.*/
+a.highlight:hover {
+    color: #ff0000;
+    font-size: large;
+}
+
+a.highlight:hover + aside{
+    display: block;
+}
+
+/* Initial color of every link will be blue, When the link has been visited, the color would be red. */
+a:link {
+    color: blue;
+}
+a.visited {
+    color: red;
+}
+
+/* The first letter of every section will be capital. */
+section::first-letter {
+    color: #09ff00;
+    font-size: xx-large;
+}
+
+/* The text of every paragraph having the attribute value ends with class "lang" will be italic.*/
+
+p[class$="lang"] {
+    font-style: italic;
+}
+/* The background of the first child of every paragraph will be yellow*/
+p:first-child{
+    background: yellow;
+}
+
+/* p:nth-child(1){
+    background: yellow;
+} */

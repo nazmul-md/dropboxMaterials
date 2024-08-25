@@ -1,0 +1,5 @@
+
+https://homepage.cs.uiowa.edu/~tinelli/classes/181/Fall17/Notes/04-academia-model.pdf
+https://homepage.cs.uiowa.edu/~tinelli/classes/181/Fall21/Tools/Alloy/Examples/academia/
+https://homepage.cs.uiowa.edu/~tinelli/classes/181/Fall21/Tools/Alloy/Examples/family/
+

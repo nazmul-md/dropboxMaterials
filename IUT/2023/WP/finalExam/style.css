@@ -1,0 +1,44 @@
+/* i. Change the background color of alternating table rows. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Alternating row colors */
+  table tr:nth-child(even) {
+    background-color: #381d1d6e;
+  }
+  
+  /* ii. Align text in all table cells to the center. */
+  table td, table th {
+    text-align: center;
+    padding: 8px; /* Adjust as needed */
+  }
+  
+  /* iii. Table headers are distinguishable from table rows. */
+  table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* iv. Responsive layout that adapts to different screen sizes. */
+  @media (max-width: 10px) {
+    table {
+      border: 0; /* Remove borders for small screens */
+    }
+  
+    table th, table td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+    table th {
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+  
+    /* Add any additional styling as needed for small screens */
+  }
+  
